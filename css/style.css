@@ -811,13 +811,13 @@ img {
 }
 
 .cert-item {
-    width: 72px;
-    height: 72px;
+    width: 100px;
+    height: 100px;
     border-radius: 10px;
     overflow: hidden;
     background: var(--white);
     box-shadow: var(--shadow-sm);
-    padding: 8px;
+    padding: 10px;
     transition: var(--transition);
 }
 
