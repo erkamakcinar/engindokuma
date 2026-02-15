@@ -767,50 +767,71 @@ img {
 .visual-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 200px 200px;
-    gap: 16px;
+    grid-template-rows: 220px 180px;
+    gap: 12px;
 }
 
 .visual-block {
     border-radius: 12px;
-    background-size: cover;
-    background-position: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.visual-block img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.visual-block:hover img {
+    transform: scale(1.05);
 }
 
 .block-1 {
     grid-column: span 2;
-    background: linear-gradient(135deg, var(--teal) 0%, var(--blue-accent) 100%);
-    position: relative;
+}
+
+/* Certificates */
+.certificates {
+    margin-top: 28px;
+}
+
+.certificates-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    font-weight: 600;
+}
+
+.certificates-grid {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.cert-item {
+    width: 72px;
+    height: 72px;
+    border-radius: 10px;
     overflow: hidden;
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+    padding: 8px;
+    transition: var(--transition);
 }
 
-.block-1::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    opacity: 0.1;
-    background-image:
-        repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.3) 10px, rgba(255,255,255,0.3) 11px);
+.cert-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
 }
 
-.block-2 {
-    background: var(--navy);
-    position: relative;
-    overflow: hidden;
-}
-
-.block-2::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    opacity: 0.08;
-    background-image:
-        repeating-linear-gradient(0deg, transparent, transparent 8px, rgba(255,255,255,0.5) 8px, rgba(255,255,255,0.5) 9px),
-        repeating-linear-gradient(90deg, transparent, transparent 8px, rgba(255,255,255,0.5) 8px, rgba(255,255,255,0.5) 9px);
-}
-
-.block-3 {
-    background: linear-gradient(135deg, var(--blue) 0%, var(--navy) 100%);
+.cert-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 /* ===== Contact ===== */
