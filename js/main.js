@@ -84,6 +84,58 @@ const animateStats = () => {
 window.addEventListener('scroll', animateStats);
 window.addEventListener('load', animateStats);
 
+// Certificate lightbox
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const certItems = document.querySelectorAll('.cert-item img');
+let currentCertIndex = 0;
+const certSources = Array.from(certItems).map(img => img.src);
+
+certItems.forEach((img, index) => {
+    img.addEventListener('click', () => {
+        currentCertIndex = index;
+        lightboxImg.src = certSources[index];
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+});
+
+document.getElementById('lightboxClose').addEventListener('click', () => {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+});
+
+lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
+
+document.getElementById('lightboxPrev').addEventListener('click', () => {
+    currentCertIndex = (currentCertIndex - 1 + certSources.length) % certSources.length;
+    lightboxImg.src = certSources[currentCertIndex];
+});
+
+document.getElementById('lightboxNext').addEventListener('click', () => {
+    currentCertIndex = (currentCertIndex + 1) % certSources.length;
+    lightboxImg.src = certSources[currentCertIndex];
+});
+
+document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    } else if (e.key === 'ArrowLeft') {
+        currentCertIndex = (currentCertIndex - 1 + certSources.length) % certSources.length;
+        lightboxImg.src = certSources[currentCertIndex];
+    } else if (e.key === 'ArrowRight') {
+        currentCertIndex = (currentCertIndex + 1) % certSources.length;
+        lightboxImg.src = certSources[currentCertIndex];
+    }
+});
+
 // Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
