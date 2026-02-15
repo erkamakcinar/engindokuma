@@ -811,13 +811,13 @@ img {
 }
 
 .cert-item {
-    width: 100px;
-    height: 100px;
-    border-radius: 10px;
+    width: 120px;
+    height: 160px;
+    border-radius: 8px;
     overflow: hidden;
     background: var(--white);
     box-shadow: var(--shadow-sm);
-    padding: 10px;
+    padding: 8px;
     transition: var(--transition);
 }
 
@@ -855,8 +855,9 @@ img {
 
 .lightbox-img {
     max-width: 90vw;
-    max-height: 85vh;
-    border-radius: 12px;
+    max-height: 90vh;
+    border-radius: 4px;
+    background: white;
     box-shadow: 0 20px 60px rgba(0,0,0,0.5);
     transform: scale(0.9);
     transition: transform 0.3s ease;
